@@ -115,4 +115,9 @@ conjoinedunemployment_data =
   left_join(unemployment_data, snppols_data, by = "year")
 ```
 
+### Describe these data 
 
+The `pols_data` dataset contained poll data from `r nrow (pols_data)` observations and `r names(pols_data)` variables. The `snp_data` dataset contained `r nrow(snp_data)` observations and `r names(snp_data)` variables. 
+The `unemployment_data` dataset contained `r nrow(unemployment_data)` observations and `r names(unemployment_data)` variables. 
+The `conjoinedunemployment_data` dataset contained
+`r nrow(conjoinedunemployment_data)` observations and `r names(conjoinedunemployment_data)` variables. Therefore it included all variables within each dataset, but combined year through joining.
