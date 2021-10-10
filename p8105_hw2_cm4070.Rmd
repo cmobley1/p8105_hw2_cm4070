@@ -126,7 +126,7 @@ The `conjoinedunemployment_data` dataset contained
 
 ### Load and tidy `popular_baby_names` dataset
 
-```{r}
+```{r, popular_baby_names_prolem3}
 babynames_data = read.csv("./data/Popular_Baby_Names.csv") %>% 
   janitor::clean_names() %>% 
   mutate(child_s_first_name = str_to_lower(child_s_first_name)) %>% 
@@ -135,3 +135,15 @@ babynames_data = read.csv("./data/Popular_Baby_Names.csv") %>%
   relocate(child_s_first_name) %>%
   distinct(.keep_all = TRUE)
 ```
+
+### Make a table for "Olivia" name
+
+```{r, olivia_table_problem3}
+olivia_table = 
+  filter(babynames_data, child_s_first_name == "olivia", gender == "female") %>%
+  select(-child_s_first_name, -gender, -count) %>%
+  pivot_wider(names_from = "year_of_birth",
+              values_from = "rank") %>%
+  relocate("ethnicity", "2011", "2012", "2013", "2014", "2015", "2016")
+```
+
