@@ -164,4 +164,13 @@ male_table =
     "2014", "2015", "2016") 
 ```
 
+## Make a plot
+
+_This code creates a scatterplot showing the number of male, non hispanic children in 2019 with a name againist the popularity of that name._
+
+```{r ggplot, warning=FALSE}
+subset_babynames = filter(babynames_data, gender == "male", ethnicity == "white non hispanic", year_of_birth == "2016")
+
+ggplot(subset_babynames, aes(x = rank, y = count)) + geom_point()
+```
 
