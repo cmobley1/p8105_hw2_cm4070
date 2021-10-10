@@ -140,7 +140,7 @@ babynames_data = read.csv("./data/Popular_Baby_Names.csv") %>%
   distinct(.keep_all = TRUE)
 ```
 
-### Make a table for "Olivia" name
+### Make a table for "Olivia" name rank over time
 
 ```{r, olivia_table_problem3}
 olivia_table = 
@@ -153,7 +153,7 @@ olivia_table =
     "2015", "2016")
 ```
 
-## Make a table for Male's most popular name
+## Make a table for Male's most popular name over time
 
 ```{r, male_table_problem3, warning= FALSE}
 male_table = 
@@ -168,7 +168,7 @@ male_table =
 
 ## Make a plot
 
-_This code creates a scatterplot showing the number of male, non hispanic children in 2019 with a name againist the popularity of that name._
+_This code creates a scatterplot showing the number of male, non hispanic children in 2016 with a name againist the popularity of that name._
 
 ```{r ggplot, warning=FALSE}
 subset_babynames = filter(babynames_data, gender == "male", ethnicity == "white non hispanic", year_of_birth == "2016")
