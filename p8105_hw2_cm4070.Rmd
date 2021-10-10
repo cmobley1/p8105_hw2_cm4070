@@ -74,10 +74,20 @@ pols_data =
   unite('president', prez_dem,prez_gop, sep = "") %>%
   mutate(president = as.numeric(president)) %>%
   mutate(president = recode(president, '10' = 'dem', '01' = 'gop')) %>%
-  mutate(month = tolower(month)) %>%
+  mutate(month = str_to_lower(month)) %>%
   select(-day)
-  view(pols_data)
 ```
+
+### Read and Clean snp dataset
+
+```{r}
+snp_data = 
+  read_csv(file = "./data/snp.csv") %>%
+  janitor::clean_names() %>%
+  separate(date, into = c("year", "month", "day")) %>%
+  select(-day)
+```
+
 
 
 
