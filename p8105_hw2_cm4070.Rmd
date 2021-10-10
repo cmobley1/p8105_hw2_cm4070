@@ -118,9 +118,11 @@ conjoinedunemployment_data =
 ### Describe these data 
 
 The `pols_data` dataset contained poll data from `r nrow (pols_data)` observations and `r names(pols_data)` variables. The `snp_data` dataset contained `r nrow(snp_data)` observations and `r names(snp_data)` variables. 
-The `unemployment_data` dataset contained `r nrow(unemployment_data)` observations and `r names(unemployment_data)` variables. 
+The `unemployment_data` dataset contained `r nrow(unemployment_data)` observations and `r names(unemployment_data)` variables. We linked months 
+and year variables, while pols_data looked at polls over time, snp looked at stock market index over time, and unemployed looked at unemployment. 
+
 The `conjoinedunemployment_data` dataset contained
-`r nrow(conjoinedunemployment_data)` observations and `r names(conjoinedunemployment_data)` variables. Therefore it included all variables within each dataset, but combined year through joining.
+`r nrow(conjoinedunemployment_data)` observations and `r names(conjoinedunemployment_data)` variables. Therefore it included all variables within each dataset, but combined year through joining. The range of years for the conjoined dataset was `r range(pull(conjoinedunemployment_data, year))`. 
 
 ## Problem 3 
 
