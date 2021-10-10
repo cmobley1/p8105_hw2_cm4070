@@ -60,6 +60,25 @@ year2019_data = filter(mrtrashwheel_data, year == "2019")
 
 There are `r nrow(mrtrashwheel_data)` observations  in `mrtrashwheel_data` and key variables are `r names(mrtrashwheel_data)`. There are `r nrow(precipitation_data)` observations in `precipitation_data` and key variables are `r names(precipitation_data)`. The total precipitation in 2018 was `r sum(pull(precipitation2018_data, total))` inches. The median sports balls in 2019 was `r median(pull(year2019_data, sports_balls))`.
 
+## Problem 2 
+
+### Read and Clean pols-month dataset
+
+```{r, pols_problem2, warning = FALSE}
+pols_data = 
+  read_csv("./data/pols-month.csv") %>% 
+  janitor::clean_names() %>%
+  separate(mon, into = c("year", "month", "day")) %>%
+  mutate(month = as.numeric(month)) %>%
+  mutate(month = month.name[month]) %>%
+  unite('president', prez_dem,prez_gop, sep = "") %>%
+  mutate(president = as.numeric(president)) %>%
+  mutate(president = recode(president, '10' = 'dem', '01' = 'gop')) %>%
+  mutate(month = tolower(month)) %>%
+  select(-day)
+  view(pols_data)
+```
+
 
 
 
