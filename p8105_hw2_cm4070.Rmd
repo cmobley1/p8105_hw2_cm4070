@@ -121,3 +121,17 @@ The `pols_data` dataset contained poll data from `r nrow (pols_data)` observatio
 The `unemployment_data` dataset contained `r nrow(unemployment_data)` observations and `r names(unemployment_data)` variables. 
 The `conjoinedunemployment_data` dataset contained
 `r nrow(conjoinedunemployment_data)` observations and `r names(conjoinedunemployment_data)` variables. Therefore it included all variables within each dataset, but combined year through joining.
+
+## Problem 3 
+
+### Load and tidy `popular_baby_names` dataset
+
+```{r}
+babynames_data = read.csv("./data/Popular_Baby_Names.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(child_s_first_name = str_to_lower(child_s_first_name)) %>% 
+  mutate(gender = str_to_lower(gender)) %>% 
+  mutate(ethnicity = str_to_lower(ethnicity)) %>% 
+  relocate(child_s_first_name) %>%
+  distinct(.keep_all = TRUE)
+```
