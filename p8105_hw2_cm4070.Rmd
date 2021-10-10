@@ -14,7 +14,7 @@ library(readxl)
 
 ## Problem 1
 
-### Read and clean Mr. Trash Wheel dataset
+### Read and clean `Mr. Trash Wheel` dataset
 
 ```{r, trashwheel_problem1}
 mrtrashwheel_data = 
@@ -25,7 +25,7 @@ mrtrashwheel_data =
   sports_balls = as.integer(sports_balls)) 
 ```
 
-### Read and clean Precipitation datasets
+### Read and clean `Precipitation` datasets
 
 ```{r, precipitation18_problem1}
 precipitation2018_data = 
@@ -43,7 +43,7 @@ precipitation2019_data =
   mutate(year = "2019")
 ```
 
-### Combine 2018 and 2019 Precipitation datasets 
+### Combine 2018 and 2019 `Precipitation` datasets 
 
 ```{r, precipitation_problem1}
 precipitation_data = 
@@ -63,7 +63,7 @@ There are `r nrow(mrtrashwheel_data)` observations  in `mrtrashwheel_data` and k
 
 ## Problem 2 
 
-### Read and Clean pols-month dataset
+### Read and Clean `pols-month` dataset
 
 ```{r, pols_problem2, warning = FALSE}
 pols_data = 
@@ -79,7 +79,7 @@ pols_data =
   select(-day)
 ```
 
-### Read and Clean snp dataset
+### Read and Clean `snp` dataset
 
 ```{r, snp_problem2}
 snp_data = 
@@ -92,7 +92,7 @@ snp_data =
   select(-day)
 ```
 
-### Read and Clean unemployment dataset
+### Read and Clean `unemployment` dataset
 
 ```{r, unemployment_problem2}
 unemployment_data = 
@@ -101,5 +101,18 @@ unemployment_data =
   pivot_longer(
     jan:dec, 
     names_to = "month", 
-    values_to = "unemployment")
+    values_to = "unemployment") %>%
+  mutate(year = as.character(year))
 ```
+
+### Join `snp` into `pols` datasets then `unemployment`
+
+```{r, joindataset_problem2}
+snppols_data = 
+  left_join(pols_data, snp_data, by = "year")
+
+conjoinedunemployment_data = 
+  left_join(unemployment_data, snppols_data, by = "year")
+```
+
+
